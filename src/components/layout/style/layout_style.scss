@@ -1,0 +1,115 @@
+header {
+  background: url("../../../source/Grouplabel.svg") center center/auto auto
+    no-repeat;
+  height: 100px;
+  width: 100%;
+  position: relative;
+
+  border-bottom: 1px solid #cdd2dd;
+
+  .wallet_add_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+
+    position: absolute;
+    width: 200px;
+    height: 48px;
+    right: calc(70 / 1440 * 100%);
+    top: calc(50% - 48px / 2);
+
+    background: #08d899;
+    box-shadow: 0px 8px 16px rgba(8, 216, 153, 0.2);
+    border-radius: 8px;
+
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+}
+
+footer {
+  position: relative;
+
+  background: #f0f5f5 url("../../../source/Grouplabel.svg") center 61px / auto
+    auto no-repeat;
+  border-top: 1px solid #cdd2dd;
+
+  height: 221px;
+  width: 100%;
+
+  .reference_information {
+    position: absolute;
+    width: 141px;
+    height: 80px;
+    left: calc(70 / 1440 * 100%);
+    top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-family: "Gilroy Regular";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    color: #676767;
+
+    span {
+      align-self: start;
+
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+
+  .rights_information {
+    position: absolute;
+    width: calc(290 / 1440 * 100%);
+    height: 22px;
+    left: calc(575 / 1440 * 100%);
+    top: 159px;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    color: #959596;
+    user-select: none;
+  }
+
+  .social_network {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0px;
+
+    position: absolute;
+    width: calc(190 / 1440 * 100%);
+    height: 24px;
+    right: calc(70 / 1440 * 100%);
+    top: 58px;
+
+    img{
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}
