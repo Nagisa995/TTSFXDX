@@ -1,6 +1,9 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { CustomInput } from "../../../ui_elements/custom_input";
 
 export const OrderCreation: FC = () => {
+  const [value, setValue] = useState("");
+
   return (
     <div className="order_creation">
       <div className="order_creation_header">
@@ -18,38 +21,22 @@ export const OrderCreation: FC = () => {
 
       <form className="order_creation_data_form">
         <div className="order_creation_data_form_tokens">
-          <input
-            type="text"
-            className="order_creation_data_form_input"
+          <CustomInput
             placeholder="Token A smart contract address"
+            value={value}
+            onChange={setValue}
           />
-          <input
-            type="text"
-            className="order_creation_data_form_input"
-            placeholder="Token B smart contract address"
-          />
+          <CustomInput placeholder="Token B smart contract address" />
         </div>
 
         <div className="order_creation_data_form_info">
-          <input
-            type="text"
-            className="order_creation_data_form_input"
-            placeholder="Token A amount"
-          />
-          <input
-            type="text"
-            className="order_creation_data_form_input"
-            placeholder="Limit price (in Token B)"
-          />
+          <CustomInput placeholder="Token A amount" />
+          <CustomInput placeholder="Limit price (in Token B)" />
         </div>
 
         <div className="order_creation_data_form_price">
           <div className="order_creation_data_form_price_container">
-            <input
-              type="text"
-              className="order_creation_data_form_input"
-              placeholder="Expected order price"
-            />
+            <CustomInput placeholder="Expected order price" />
           </div>
         </div>
 

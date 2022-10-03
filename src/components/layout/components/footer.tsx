@@ -1,9 +1,9 @@
 //@ts-nocheck
 import { FC } from "react";
-import FacebookIcon from '../../../source/Vectorfacebook.svg'
-import TwitterIcon from '../../../source/Vectortwitter.svg'
-import YoutubeIcon from '../../../source/Vectoryoutube.svg'
-import InstagramIcon from '../../../source/Vectorinstagram.svg'
+import FacebookIcon from "../../../source/Vectorfacebook.svg";
+import TwitterIcon from "../../../source/Vectortwitter.svg";
+import YoutubeIcon from "../../../source/Vectoryoutube.svg";
+import InstagramIcon from "../../../source/Vectorinstagram.svg";
 
 export const Footer: FC = () => {
   return (
@@ -14,15 +14,15 @@ export const Footer: FC = () => {
         <span>Cookie Policy</span>
       </div>
 
-      <div className="rights_information">
-        ©2022 All rights reserved. Powered by Atla
-      </div>
-
       <div className="social_network">
         <img src={FacebookIcon} alt="" />
         <img src={TwitterIcon} alt="" />
         <img src={YoutubeIcon} alt="" />
         <img src={InstagramIcon} alt="" />
+      </div>
+
+      <div className="rights_information">
+        ©2022 All rights reserved. Powered by Atla
       </div>
     </footer>
   );

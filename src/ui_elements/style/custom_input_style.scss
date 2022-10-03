@@ -1,0 +1,93 @@
+.custom_input {
+  width: 100%;
+  height: 44px;
+
+  background: #f0f5f5;
+  border: 1px solid #cdd2dd;
+  border-radius: 8px;
+
+  padding: 13px 16px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: #676767;
+
+  position: relative;
+
+  transition: 250ms linear;
+
+  &_invisible {
+    opacity: 0;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    transition: 250ms linear;
+  }
+
+  .placeholder {
+    transition: 250ms linear;
+  }
+}
+
+.custom_input_active {
+  width: 100%;
+  height: 44px;
+
+  background: #f0f5f5;
+  border: 1px solid #cdd2dd;
+  border-radius: 8px;
+
+  padding: 6px 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  transition: 250ms linear;
+
+  .placeholder {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    color: #676767;
+
+    transition: 250ms linear;
+  }
+
+  &_visible {
+    width: 100%;
+    height: 18px;
+
+    opacity: 1;
+
+    background: #f0f5f5;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #092326;
+
+    transition: 250ms linear;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .custom_input,
+  .custom_input_active {
+    width: 100%;
+
+    margin-top: 30px;
+  }
+}

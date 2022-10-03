@@ -23,4 +23,82 @@ h1 {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.root {
+  background: url("../source/Ellipse169background.svg") 69% 25%/auto auto round, url("../source/Ellipse170background.svg") 15% 62%/auto auto round, url("../source/Ellipse171background.svg") 75% 6%/auto auto round;
+  -webkit-animation: chaos 40s linear infinite;
+          animation: chaos 40s linear infinite;
+}
+
+@-webkit-keyframes chaos {
+  0% {
+    background-position: 0% 38%;
+  }
+  10% {
+    background-position: 46% 24%;
+  }
+  20% {
+    background-position: 94% 12%;
+  }
+  30% {
+    background-position: 36% 89%;
+  }
+  40% {
+    background-position: 14% 49%;
+  }
+  50% {
+    background-position: 85% 100%;
+  }
+  60% {
+    background-position: 0% 85%;
+  }
+  70% {
+    background-position: 53% 1%;
+  }
+  80% {
+    background-position: 39% 15%;
+  }
+  90% {
+    background-position: 84% -15%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
+}
+
+@keyframes chaos {
+  0% {
+    background-position: 0% 38%;
+  }
+  10% {
+    background-position: 46% 24%;
+  }
+  20% {
+    background-position: 94% 12%;
+  }
+  30% {
+    background-position: 36% 89%;
+  }
+  40% {
+    background-position: 14% 49%;
+  }
+  50% {
+    background-position: 85% 100%;
+  }
+  60% {
+    background-position: 0% 85%;
+  }
+  70% {
+    background-position: 53% 1%;
+  }
+  80% {
+    background-position: 39% 15%;
+  }
+  90% {
+    background-position: 84% -15%;
+  }
+  100% {
+    background-position: 0% 38%;
+  }
 }/*# sourceMappingURL=app_style.css.map */
