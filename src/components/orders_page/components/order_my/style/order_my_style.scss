@@ -1,0 +1,42 @@
+.order_my {
+  min-height: 330px;
+  position: relative;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  &_title {
+    margin: 30px;
+  }
+  .default_message {
+    position: absolute;
+    top: calc(50% - 24px / 2);
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #676767;
+
+    user-select: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .order_my {
+    width: 100%;
+    &_title {
+      margin: 30px;
+      text-align: center;
+    }
+  }
+}

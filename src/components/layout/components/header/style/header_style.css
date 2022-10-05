@@ -1,0 +1,14 @@
+header {
+  background: url("../../../../../source/Grouplabel.svg") center center/auto auto no-repeat;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #cdd2dd;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  header {
+    background: url("../../../../../source/Grouplabel.svg") 20px 26px/98px 16px no-repeat;
+    border-bottom: none;
+  }
+}/*# sourceMappingURL=header_style.css.map */

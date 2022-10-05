@@ -1,0 +1,28 @@
+.order_creation {
+  min-height: 512px;
+
+  padding: 34px calc(110 / 970 * 100%) 34px calc(30 / 970 * 100%);
+
+  background: #ffffff url("../../../../../source/Union.svg") right bottom / auto
+    auto no-repeat;
+  border-radius: 16px;
+
+  &_header {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .order_creation {
+    width: 100%;
+    padding: 34px 12px 30px;
+
+    background: #ffffff;
+
+    &_header {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

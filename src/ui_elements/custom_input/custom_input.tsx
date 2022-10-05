@@ -42,5 +42,3 @@ export const CustomInput: FC<ICustomInput> = ({
     </div>
   );
 };
-
-//value={value}

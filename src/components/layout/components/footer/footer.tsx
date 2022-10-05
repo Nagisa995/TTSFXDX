@@ -1,9 +1,10 @@
 //@ts-nocheck
 import { FC } from "react";
-import FacebookIcon from "../../../source/Vectorfacebook.svg";
-import TwitterIcon from "../../../source/Vectortwitter.svg";
-import YoutubeIcon from "../../../source/Vectoryoutube.svg";
-import InstagramIcon from "../../../source/Vectorinstagram.svg";
+import FacebookIcon from "../../../../source/Vectorfacebook.svg";
+import TwitterIcon from "../../../../source/Vectortwitter.svg";
+import YoutubeIcon from "../../../../source/Vectoryoutube.svg";
+import InstagramIcon from "../../../../source/Vectorinstagram.svg";
+import "./style/footer_style.css";
 
 export const Footer: FC = () => {
   return (

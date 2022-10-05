@@ -1,34 +1,6 @@
-header {
-  background: url("../../../source/Grouplabel.svg") center center/auto auto no-repeat;
-  height: 100px;
-  width: 100%;
-  position: relative;
-  border-bottom: 1px solid #cdd2dd;
-}
-header .wallet_add_button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 32px;
-  position: absolute;
-  width: 200px;
-  height: 48px;
-  right: 4.8611111111%;
-  top: calc(50% - 24px);
-  background: #08d899;
-  box-shadow: 0px 8px 16px rgba(8, 216, 153, 0.2);
-  border-radius: 8px;
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 24px;
-  color: #ffffff;
-}
-
 footer {
   position: relative;
-  background: #f0f5f5 url("../../../source/Grouplabel.svg") center 61px/auto auto no-repeat;
+  background: #f0f5f5 url("../../../../../source/Grouplabel.svg") center 61px/auto auto no-repeat;
   border-top: 1px solid #cdd2dd;
   height: 221px;
   width: 100%;
@@ -100,21 +72,9 @@ footer .social_network img {
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
-  header {
-    background: url("../../../source/Grouplabel.svg") 20px 26px/98px 16px no-repeat;
-    border-bottom: none;
-  }
-  header .wallet_add_button {
-    padding: 10px 12px;
-    width: 177px;
-    height: 38px;
-    right: 20px;
-    top: 15px;
-    border-radius: 20px;
-  }
   footer {
     height: 356px;
-    background: #ffffff url("../../../source/Grouplabel.svg") center 50px/120px 20px no-repeat;
+    background: #ffffff url("../../../../../source/Grouplabel.svg") center 50px/120px 20px no-repeat;
     border-top: none;
   }
   footer .reference_information {
@@ -135,4 +95,4 @@ footer .social_network img {
     left: calc(50% - 95px - 0.5px);
     top: 240px;
   }
-}/*# sourceMappingURL=layout_style.css.map */
+}/*# sourceMappingURL=footer_style.css.map */

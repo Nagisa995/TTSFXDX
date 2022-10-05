@@ -1,0 +1,35 @@
+.order_book {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  background: #ffffff;
+  border-radius: 16px;
+}
+.order_book_title {
+  margin: 34px 9.6774193548% 20px;
+}
+.order_book .default_message {
+  display: inline-block;
+  margin: 20px 36px;
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: #676767;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .order_book {
+    width: 100%;
+  }
+  .order_book_title {
+    margin: 34px 74px 20px;
+    text-align: center;
+  }
+}/*# sourceMappingURL=order_book_style.css.map */

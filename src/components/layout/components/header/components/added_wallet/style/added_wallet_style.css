@@ -1,0 +1,41 @@
+.added_wallet_container {
+  padding: 10px 12px;
+  gap: 8px;
+  position: absolute;
+  width: 200px;
+  height: 44px;
+  right: 4.8611111111%;
+  top: calc(50% - 22px);
+  background: #ffffff;
+  border-radius: 20px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #08d899;
+  display: flex;
+  align-items: center;
+}
+.added_wallet_container .metamask_logo {
+  width: 24px;
+  height: 24px;
+}
+.added_wallet_container .end_image {
+  width: 16px;
+  height: 16px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .added_wallet_container {
+    width: 177px;
+    height: 38px;
+    top: 15px;
+    right: 20px;
+    font-size: 12px;
+  }
+  .added_wallet_container .metamask_logo {
+    width: 18px;
+    height: 18px;
+  }
+}/*# sourceMappingURL=added_wallet_style.css.map */

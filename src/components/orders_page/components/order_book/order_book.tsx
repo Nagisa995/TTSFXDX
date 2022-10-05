@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "./style/order_book_style.css";
 
 export const OrderBook: FC = () => {
   return (

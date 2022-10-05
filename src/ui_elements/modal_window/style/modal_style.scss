@@ -1,0 +1,14 @@
+.modal_window {
+  position: fixed;
+  z-index: 99;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+
+  background: rgba($color: #092326, $alpha: 0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
