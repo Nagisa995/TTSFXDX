@@ -1,3 +1,7 @@
+export const fee = 3;
+
+export const backendURL = "http://178.49.148.49:40010";
+
 export const correctNetwork = "rinkeby";
 
 export const contractAddress = "0xC7dd7d4730d95AAE47F27c32eBb85b04fc78769E";

@@ -5,18 +5,23 @@ interface ICustomInput {
   placeholder: string;
   value?: string;
   onChange?: React.Dispatch<React.SetStateAction<string>> | void;
+  isValid?: boolean;
 }
 
 export const CustomInput: FC<ICustomInput> = ({
   placeholder,
   value = "",
   onChange = () => {},
+  isValid = false,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <div
-      className={(isActive && "custom_input_active") || "custom_input"}
+      className={
+        ((isActive && "custom_input_active") || "custom_input") +
+        (isValid ? " value_valid" : "")
+      }
       tabIndex={0}
       onFocus={(e) => {
         setIsActive(true);
@@ -36,7 +41,7 @@ export const CustomInput: FC<ICustomInput> = ({
         }
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          onChange(e.target.value)
+          onChange(e.target.value.trim())
         }
       />
     </div>
