@@ -2,9 +2,9 @@ export const fee = 3;
 
 export const backendURL = "http://178.49.148.49:40010";
 
-export const correctNetwork = "rinkeby";
+export const correctNetwork = "goerli";
 
-export const contractAddress = "0xC7dd7d4730d95AAE47F27c32eBb85b04fc78769E";
+export const contractAddress = "0x352F8C1f8576183b6c783D3e589aBB69FfBeBc47";
 
 export const contractABI = [
   {

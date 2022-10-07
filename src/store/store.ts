@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import walletReducer from "./reducers/wallet-reducer";
 import orderReducer from "./reducers/order_reducer";
+import fetchingReducer from "./reducers/data_fetching";
 
 const rootReducer = combineReducers({
   walletReducer,
   orderReducer,
+  fetchingReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

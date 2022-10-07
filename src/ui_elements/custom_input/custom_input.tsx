@@ -3,16 +3,18 @@ import "./style/custom_input_style.css";
 
 interface ICustomInput {
   placeholder: string;
-  value?: string;
-  onChange?: React.Dispatch<React.SetStateAction<string>> | void;
-  isValid?: boolean;
+  value: string;
+  onChange: React.Dispatch<React.SetStateAction<string>>;
+  isValid: boolean;
+  disabled: boolean;
 }
 
 export const CustomInput: FC<ICustomInput> = ({
   placeholder,
-  value = "",
-  onChange = () => {},
-  isValid = false,
+  value,
+  onChange,
+  isValid,
+  disabled,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -20,14 +22,14 @@ export const CustomInput: FC<ICustomInput> = ({
     <div
       className={
         ((isActive && "custom_input_active") || "custom_input") +
-        (isValid ? " value_valid" : "")
+        (isValid && !disabled ? " value_valid" : "")
       }
       tabIndex={0}
       onFocus={(e) => {
         setIsActive(true);
       }}
       onBlur={(e) => {
-        const valueIsEmpty = value.trim() === "";
+        const valueIsEmpty = value === "";
         if (!e.currentTarget.contains(e.relatedTarget) && valueIsEmpty)
           setIsActive(false);
       }}
@@ -44,6 +46,14 @@ export const CustomInput: FC<ICustomInput> = ({
           onChange(e.target.value.trim())
         }
       />
+      {disabled && (
+        <div
+          className="disabled"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        />
+      )}
     </div>
   );
 };
