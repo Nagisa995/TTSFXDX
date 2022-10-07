@@ -36,7 +36,12 @@ export const OrderDataForm: FC = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const isExecutionOrderStage = stage === ORDER_EXECUTION_STAGE.EXECUTION_ORDER;
-  const disabled = isFetchingMatchingOrders || isExecutionOrderStage;
+  const isTransactionOrderStage =
+    stage === ORDER_EXECUTION_STAGE.TRANSACTION_PROGRESS;
+  const disabled =
+    isFetchingMatchingOrders ||
+    isExecutionOrderStage ||
+    isTransactionOrderStage;
 
   useEffect(() => {
     const isWalletConnected = wallet !== defaultWalletData.wallet;
@@ -149,6 +154,7 @@ export const OrderDataForm: FC = () => {
               tokenB={tokenB}
               amountA={amountA}
               limitPrice={limitPrice}
+              wallet={wallet}
             />
           }
         />

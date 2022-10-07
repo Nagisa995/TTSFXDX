@@ -13,6 +13,7 @@ export enum ORDER_OPERATION {
 export enum ORDER_EXECUTION_STAGE {
   DATA_COLLECTION = "Collection",
   EXECUTION_ORDER = "Execution",
+  TRANSACTION_PROGRESS = "In progress",
   ORDER_ISSUED = "Issued",
 }
 

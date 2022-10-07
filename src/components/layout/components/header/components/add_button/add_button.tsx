@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useAppDispatch } from "../../../../../../hooks/redux";
-import { web3Init } from "../../../../../../web3/web3Client";
+import { web3WalletConnect } from "../../../../../../web3/web3Client";
 import "./style/button_style.css";
 
 export const AddWalletButton: FC = () => {
@@ -9,7 +9,7 @@ export const AddWalletButton: FC = () => {
     <button
       className="wallet_add_button"
       //@ts-ignore
-      onClick={() => dispatch(web3Init())}
+      onClick={() => dispatch(web3WalletConnect())}
     >
       Connect Wallet
     </button>

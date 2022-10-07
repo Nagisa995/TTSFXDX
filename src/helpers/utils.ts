@@ -42,7 +42,7 @@ export const getMatchingOrdersURL = (
   }
 };
 
-const convertNumber = (number: string | number): number => {
+export const convertNumber = (number: string | number): number => {
   return +number * Math.pow(10, 18);
 };
 

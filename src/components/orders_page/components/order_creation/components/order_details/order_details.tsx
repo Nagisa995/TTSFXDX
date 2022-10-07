@@ -1,22 +1,23 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import "./style/order_details_style.css";
 //@ts-ignore
 import CloseLogo from "../../../../../../source/close_icon.svg";
 import { useAppDispatch, useAppSelector } from "../../../../../../hooks/redux";
-import Web3 from "web3";
-import { contractABI, contractAddress } from "../../../../../../helpers/const";
 import {
   orderReducerSlice,
   ORDER_EXECUTION_STAGE,
   ORDER_OPERATION,
+  ORDER_TYPE,
 } from "../../../../../../store/reducers/order_reducer";
 import { SizeETH } from "../../../../../../ui_elements/size_eth/size_eth";
+import { web3CompleteOrder } from "../../../../../../web3/web3Client";
 
 interface IOrderDetails {
   tokenA: string;
   tokenB: string;
   amountA: string;
   limitPrice: string;
+  wallet: string;
 }
 
 export const OrderDetails: FC<IOrderDetails> = ({
@@ -24,26 +25,17 @@ export const OrderDetails: FC<IOrderDetails> = ({
   tokenB,
   amountA,
   limitPrice,
+  wallet,
 }) => {
+  const { matchingOrders } = useAppSelector((state) => state.fetchingReducer);
   const { type, operation } = useAppSelector((state) => state.orderReducer);
   const dispatch = useAppDispatch();
 
   const amountB = +amountA * +limitPrice;
   const isBuyOperation = operation === ORDER_OPERATION.BUY;
+  const isMatchingOrdersNotEmpty = matchingOrders.length !== 0;
+  const isMarketType = type === ORDER_TYPE.MARKET;
 
-  const [web3, setWeb3] = useState();
-  const [contract, setContract] = useState();
-
-  useEffect(() => {
-    //@ts-ignore
-    const web3 = new Web3(window.ethereum);
-    //@ts-ignore
-    const contract = new web3.eth.Contract(contractABI, contractAddress);
-    //@ts-ignore
-    setWeb3(web3);
-    //@ts-ignore
-    setContract(contract);
-  }, []);
   return (
     <div className="order_details">
       <div className="order_details_title">
@@ -60,6 +52,7 @@ export const OrderDetails: FC<IOrderDetails> = ({
           }}
         />
       </div>
+
       <div className="order_details_info">
         <div className="order_details_info_container">
           <div>Trading pair:</div>
@@ -86,9 +79,45 @@ export const OrderDetails: FC<IOrderDetails> = ({
           </div>
         </div>
       </div>
+
       <h1>{!isBuyOperation ? ORDER_OPERATION.BUY : ORDER_OPERATION.SELL}</h1>
+
       <div>
         <SizeETH />
+      </div>
+
+      <div
+        className="button_group"
+        onClick={() => {
+          if (isBuyOperation) {
+            dispatch(
+              web3CompleteOrder(
+                tokenA,
+                tokenB,
+                amountA,
+                amountB,
+                wallet,
+                matchingOrders,
+                isMarketType
+              )
+            );
+          } else {
+            dispatch(
+              web3CompleteOrder(
+                tokenB,
+                tokenA,
+                amountB,
+                amountA,
+                wallet,
+                matchingOrders,
+                isMarketType
+              )
+            );
+          }
+        }}
+      >
+        <button disabled={!isMatchingOrdersNotEmpty}>Match</button>
+        <button disabled={isMatchingOrdersNotEmpty}>Place Order</button>
       </div>
     </div>
   );
