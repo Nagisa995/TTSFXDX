@@ -4,7 +4,10 @@ import {
   getMatchingOrdersURL,
   getOrdersInfoURL,
 } from "../helpers/utils";
-import { dataFetchingReducerSlice } from "../store/reducers/data_fetching";
+import {
+  dataFetchingReducerSlice,
+  ORDER_FETCHING,
+} from "../store/reducers/data_fetching";
 import {
   orderReducerSlice,
   ORDER_EXECUTION_STAGE,
@@ -33,6 +36,37 @@ export const getAllOrders = async () => {
     console.log(error);
   }
 };
+
+export const getOrdersInfo =
+  (tokenA: string, tokenB: string, operation: ORDER_OPERATION) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      dispatch(
+        dataFetchingReducerSlice.actions.changeOrderInfoFetchingStatus(
+          ORDER_FETCHING.FETCHING
+        )
+      );
+
+      const ordersInfo = await axios.get<IOrderData[]>(
+        getOrdersInfoURL(tokenA, tokenB, operation)
+      );
+
+      setTimeout(
+        () =>
+          dispatch(
+            dataFetchingReducerSlice.actions.saveTokensOrderInfo(
+              ordersInfo.data
+            )
+          ),
+        500
+      );
+
+      console.log(ordersInfo.data);
+      return ordersInfo.data;
+    } catch (error) {
+      dispatch(dataFetchingReducerSlice.actions.saveTokensOrderInfo([]));
+    }
+  };
 
 export const getMatchingOrders =
   (

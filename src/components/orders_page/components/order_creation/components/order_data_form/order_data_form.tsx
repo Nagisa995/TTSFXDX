@@ -1,5 +1,8 @@
 import { FC, useEffect, useState } from "react";
-import { getMatchingOrders } from "../../../../../../api/order_api";
+import {
+  getMatchingOrders,
+  getOrdersInfo,
+} from "../../../../../../api/order_api";
 import {
   calculationExpectedPrice,
   isAllDataValid,
@@ -7,6 +10,10 @@ import {
   isTokenValid,
 } from "../../../../../../helpers/utils";
 import { useAppDispatch, useAppSelector } from "../../../../../../hooks/redux";
+import {
+  dataFetchingReducerSlice,
+  ORDER_FETCHING,
+} from "../../../../../../store/reducers/data_fetching";
 import {
   orderReducerSlice,
   ORDER_EXECUTION_STAGE,
@@ -55,6 +62,18 @@ export const OrderDataForm: FC = () => {
     }
   }, [tokenA, tokenB, amountA, limitPrice, wallet]);
   /*eslint-disable*/
+  useEffect(() => {
+    if (isTokenValid(tokenA) && isTokenValid(tokenB)) {
+      dispatch(getOrdersInfo(tokenA, tokenB, operation));
+    } else {
+      dispatch(
+        dataFetchingReducerSlice.actions.changeOrderInfoFetchingStatus(
+          ORDER_FETCHING.NOT_LOADED
+        )
+      );
+    }
+  }, [tokenA, tokenB, operation]);
+
   useEffect(() => {
     const isOrderIssued = stage === ORDER_EXECUTION_STAGE.ORDER_ISSUED;
     if (isOrderIssued) {

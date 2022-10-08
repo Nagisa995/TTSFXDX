@@ -1,5 +1,37 @@
+import { IOrderData } from "../api/order_api";
 import { ORDER_OPERATION, ORDER_TYPE } from "../store/reducers/order_reducer";
 import { backendURL, correctNetwork, fee } from "./const";
+
+export const getOpacityValue = (index: number): number => {
+  return 1 - 0.2 * index;
+};
+
+export const getWidthValue = (index: number): number => {
+  return 80 - 15 * index;
+};
+
+export const sortedOrders = (
+  orders: IOrderData[],
+  isOperationBuy: boolean
+): IOrderData[] => {
+  return orders
+    .slice()
+    .sort((orderA: IOrderData, orderB: IOrderData) =>
+      sorted(orderA, orderB, isOperationBuy)
+    )
+    .slice(0, 5);
+};
+
+const sorted = (
+  orderA: IOrderData,
+  orderB: IOrderData,
+  isOperationBuy: boolean
+): number => {
+  const ethA = isOperationBuy ? orderA.amountB : orderA.amountA;
+  const ethB = isOperationBuy ? orderB.amountB : orderB.amountA;
+
+  return +ethA - +ethB;
+};
 
 export const getAllOrdersURL = (): string => {
   return backendURL + "/getOrders";
@@ -40,6 +72,10 @@ export const getMatchingOrdersURL = (
       expectedPrice
     )}&amountB=${convertNumber(amountA)}&isMarket=${isMarket}`;
   }
+};
+
+export const getNumber = (number: string): number => {
+  return +number / Math.pow(10, 18);
 };
 
 export const convertNumber = (number: string | number): number => {

@@ -9,8 +9,8 @@ import {
   ORDER_OPERATION,
   ORDER_TYPE,
 } from "../../../../../../store/reducers/order_reducer";
-import { SizeETH } from "../../../../../../ui_elements/size_eth/size_eth";
 import { web3CompleteOrder } from "../../../../../../web3/web3Client";
+import { OrderInformation } from "../../../../../../ui_elements/order_information/order_information";
 
 interface IOrderDetails {
   tokenA: string;
@@ -27,7 +27,9 @@ export const OrderDetails: FC<IOrderDetails> = ({
   limitPrice,
   wallet,
 }) => {
-  const { matchingOrders } = useAppSelector((state) => state.fetchingReducer);
+  const { matchingOrders, tokensOrderInfo } = useAppSelector(
+    (state) => state.fetchingReducer
+  );
   const { type, operation } = useAppSelector((state) => state.orderReducer);
   const dispatch = useAppDispatch();
 
@@ -82,12 +84,19 @@ export const OrderDetails: FC<IOrderDetails> = ({
 
       <h1>{!isBuyOperation ? ORDER_OPERATION.BUY : ORDER_OPERATION.SELL}</h1>
 
-      <div>
-        <SizeETH />
-      </div>
+      {(isMatchingOrdersNotEmpty && (
+        <OrderInformation
+          ordersInformation={tokensOrderInfo}
+          operation={operation}
+        />
+      )) || (
+        <div className="default_message">
+          <h1>There is no matches for your order now</h1>
+        </div>
+      )}
 
       <div
-        className="button_group"
+        className="order_details_button_group"
         onClick={() => {
           if (isBuyOperation) {
             dispatch(
