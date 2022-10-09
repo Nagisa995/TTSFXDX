@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./style/custom_input_style.css";
 
 interface ICustomInput {
@@ -17,6 +17,13 @@ export const CustomInput: FC<ICustomInput> = ({
   disabled,
 }) => {
   const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const valueIsEmpty = value === "";
+    if (valueIsEmpty) {
+      setIsActive(false);
+    }
+  }, [value]);
 
   return (
     <div

@@ -1,7 +1,11 @@
 //@ts-nocheck
 import Web3 from "web3";
 import { contractABI, contractAddress } from "../helpers/const";
-import { convertNumber, isCorrectNetwork } from "../helpers/utils";
+import {
+  convertNumber,
+  isCorrectNetwork,
+  isDataNotEmpty,
+} from "../helpers/utils";
 import {
   orderReducerSlice,
   ORDER_EXECUTION_STAGE,
@@ -34,7 +38,7 @@ export const web3WalletConnect = () => (dispatch: AppDispatch) => {
           }
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => dispatch(walletReducerSlice.actions.networkCheck()));
   }
 };
 
@@ -42,7 +46,7 @@ export const web3CompleteOrder =
   (tokenA, tokenB, amountA, amountB, wallet, matchingOrders, isMarketType) =>
   (dispatch: AppDispatch) => {
     const provider = window.ethereum;
-    const isMatchingOrdersNotEmpty = matchingOrders.length !== 0;
+    const isMatchingOrdersNotEmpty = isDataNotEmpty(matchingOrders);
 
     if (typeof provider !== "undefined") {
       const web3 = new Web3(provider);
@@ -116,5 +120,33 @@ export const web3CompleteOrder =
           dispatch(walletReducerSlice.actions.networkCheck());
         }
       });
+    }
+  };
+
+export const web3CancelOrder =
+  (id: string, wallet: string) => (dispatch: AppDispatch) => {
+    const provider = window.ethereum;
+
+    if (typeof provider !== "undefined") {
+      const web3 = new Web3(provider);
+      const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+      web3.eth.net
+        .getNetworkType()
+        .then((network) => {
+          const isNetworkCorrect = isCorrectNetwork(network);
+
+          if (isNetworkCorrect) {
+            contract.methods
+              .cancelOrder(id)
+              .send({ from: wallet })
+              .then((data) => dispatch(getMyOrdersInfo(wallet)));
+          } else {
+            dispatch(walletReducerSlice.actions.networkCheck());
+          }
+        })
+        .catch((error) => {
+          dispatch(walletReducerSlice.actions.networkCheck());
+        });
     }
   };

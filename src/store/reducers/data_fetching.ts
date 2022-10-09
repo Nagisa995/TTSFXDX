@@ -10,15 +10,19 @@ export enum ORDER_FETCHING {
 interface IFetchingData {
   isFetchingMatchingOrders: boolean;
   orderInfoFetchingStatus: ORDER_FETCHING;
+  isFetchingMyOrders: boolean;
   matchingOrders: string[];
   tokensOrderInfo: IOrderData[];
+  myOrdersInfo: IOrderData[];
 }
 
 export const defaultFetchingData: IFetchingData = {
   isFetchingMatchingOrders: false,
   orderInfoFetchingStatus: ORDER_FETCHING.NOT_LOADED,
+  isFetchingMyOrders: false,
   matchingOrders: [],
   tokensOrderInfo: [],
+  myOrdersInfo: [],
 };
 
 export const dataFetchingReducerSlice = createSlice({
@@ -40,6 +44,13 @@ export const dataFetchingReducerSlice = createSlice({
     saveTokensOrderInfo(state, action: PayloadAction<IOrderData[]>) {
       state.tokensOrderInfo = action.payload;
       state.orderInfoFetchingStatus = ORDER_FETCHING.LOADED;
+    },
+    changeMyOrdersFetchingStatus(state) {
+      state.isFetchingMyOrders = !state.isFetchingMyOrders;
+    },
+    saveMyOrdersInfo(state, action: PayloadAction<IOrderData[]>) {
+      state.myOrdersInfo = action.payload;
+      state.isFetchingMyOrders = !state.isFetchingMyOrders;
     },
   },
 });

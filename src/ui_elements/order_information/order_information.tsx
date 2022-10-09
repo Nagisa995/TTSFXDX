@@ -4,6 +4,7 @@ import {
   getNumber,
   getOpacityValue,
   getWidthValue,
+  isDataNotEmpty,
   sortedOrders,
 } from "../../helpers/utils";
 import { ORDER_OPERATION } from "../../store/reducers/order_reducer";
@@ -19,7 +20,7 @@ export const OrderInformation: FC<IOrderInformation> = ({
   ordersInformation,
 }) => {
   const isBuyOperation = operation === ORDER_OPERATION.BUY;
-  const isOrdersInformationNotEmpty = ordersInformation.length !== 0;
+  const isOrdersInformationNotEmpty = isDataNotEmpty(ordersInformation);
 
   const ordersOnUi = sortedOrders(ordersInformation, isBuyOperation).map(
     (order, index) => (
@@ -28,6 +29,7 @@ export const OrderInformation: FC<IOrderInformation> = ({
         isBuyOperation={isBuyOperation}
         opacity={getOpacityValue(index)}
         width={getWidthValue(index)}
+        key={Date.now()}
       />
     )
   );

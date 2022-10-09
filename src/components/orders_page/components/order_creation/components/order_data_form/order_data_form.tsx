@@ -161,9 +161,9 @@ export const OrderDataForm: FC = () => {
           </div>
         </div>
 
-        {(disabled && <DisabledButton />) || (
-          <SubmitButton isValid={isFormValid && !disabled} />
-        )}
+        {(disabled && (
+          <DisabledButton isTransactionStage={isTransactionOrderStage} />
+        )) || <SubmitButton isValid={isFormValid && !disabled} />}
       </form>
       {isExecutionOrderStage && (
         <ModalWindow

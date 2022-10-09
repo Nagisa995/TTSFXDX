@@ -1,8 +1,9 @@
 import axios from "axios";
 import {
-  getAllOrdersURL,
   getMatchingOrdersURL,
+  getMyOrdersURL,
   getOrdersInfoURL,
+  isDataNotEmpty,
 } from "../helpers/utils";
 import {
   dataFetchingReducerSlice,
@@ -28,14 +29,22 @@ export interface IOrderData {
   user: string;
 }
 
-export const getAllOrders = async () => {
-  try {
-    const orders = await axios.get<IOrderData[]>(getAllOrdersURL());
-    console.log(orders.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const getMyOrdersInfo =
+  (wallet: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(dataFetchingReducerSlice.actions.changeMyOrdersFetchingStatus());
+
+      const myOrdersInfo = await axios.get<IOrderData[]>(
+        getMyOrdersURL(wallet)
+      );
+
+      dispatch(
+        dataFetchingReducerSlice.actions.saveMyOrdersInfo(myOrdersInfo.data)
+      );
+    } catch (error) {
+      dispatch(dataFetchingReducerSlice.actions.saveMyOrdersInfo([]));
+    }
+  };
 
 export const getOrdersInfo =
   (tokenA: string, tokenB: string, operation: ORDER_OPERATION) =>
@@ -51,18 +60,9 @@ export const getOrdersInfo =
         getOrdersInfoURL(tokenA, tokenB, operation)
       );
 
-      setTimeout(
-        () =>
-          dispatch(
-            dataFetchingReducerSlice.actions.saveTokensOrderInfo(
-              ordersInfo.data
-            )
-          ),
-        500
+      dispatch(
+        dataFetchingReducerSlice.actions.saveTokensOrderInfo(ordersInfo.data)
       );
-
-      console.log(ordersInfo.data);
-      return ordersInfo.data;
     } catch (error) {
       dispatch(dataFetchingReducerSlice.actions.saveTokensOrderInfo([]));
     }
@@ -92,20 +92,16 @@ export const getMatchingOrders =
         )
       );
 
-      console.log(matchingOrders.data);
-
       dispatch(
         dataFetchingReducerSlice.actions.saveMatchingOrders(matchingOrders.data)
       );
 
-      const haveMatchingOrders = matchingOrders.data.length !== 0;
+      const haveMatchingOrders = isDataNotEmpty(matchingOrders.data);
 
       if (haveMatchingOrders) {
         const ordersInfo = await axios.get<IOrderData[]>(
           getOrdersInfoURL(tokenA, tokenB, operation)
         );
-
-        console.log(ordersInfo.data);
 
         dispatch(
           dataFetchingReducerSlice.actions.saveTokensOrderInfo(ordersInfo.data)

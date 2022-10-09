@@ -11,6 +11,7 @@ import {
 } from "../../../../../../store/reducers/order_reducer";
 import { web3CompleteOrder } from "../../../../../../web3/web3Client";
 import { OrderInformation } from "../../../../../../ui_elements/order_information/order_information";
+import { isDataNotEmpty } from "../../../../../../helpers/utils";
 
 interface IOrderDetails {
   tokenA: string;
@@ -35,7 +36,7 @@ export const OrderDetails: FC<IOrderDetails> = ({
 
   const amountB = +amountA * +limitPrice;
   const isBuyOperation = operation === ORDER_OPERATION.BUY;
-  const isMatchingOrdersNotEmpty = matchingOrders.length !== 0;
+  const isMatchingOrdersNotEmpty = isDataNotEmpty(matchingOrders);
   const isMarketType = type === ORDER_TYPE.MARKET;
 
   return (

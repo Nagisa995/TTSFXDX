@@ -27,6 +27,19 @@
       -ms-user-select: none;
           user-select: none;
 }
+.order_my .loader {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order_my .loader img {
+  width: 50px;
+  -webkit-animation: 3s linear infinite spin;
+          animation: 3s linear infinite spin;
+}
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .order_my {

@@ -1,6 +1,19 @@
 import { IOrderData } from "../api/order_api";
 import { ORDER_OPERATION, ORDER_TYPE } from "../store/reducers/order_reducer";
+import { defaultWalletData } from "../store/reducers/wallet-reducer";
 import { backendURL, correctNetwork, fee } from "./const";
+
+export const walletConnected = (wallet: string): boolean => {
+  return wallet !== defaultWalletData.wallet;
+};
+
+export const isDataNotEmpty = (array: any[]): boolean => {
+  return array.length !== 0;
+};
+
+export const getMyOrdersURL = (user: string): string => {
+  return backendURL + `/getOrders?user=${user}`;
+};
 
 export const getOpacityValue = (index: number): number => {
   return 1 - 0.2 * index;
@@ -31,10 +44,6 @@ const sorted = (
   const ethB = isOperationBuy ? orderB.amountB : orderB.amountA;
 
   return +ethA - +ethB;
-};
-
-export const getAllOrdersURL = (): string => {
-  return backendURL + "/getOrders";
 };
 
 export const getOrdersInfoURL = (

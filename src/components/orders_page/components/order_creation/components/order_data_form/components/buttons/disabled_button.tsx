@@ -3,11 +3,17 @@ import { FC } from "react";
 import LoaderImage from "../../../../../../../../source/Unionloader.svg";
 import "./style/button_style.css";
 
-export const DisabledButton: FC = () => {
+interface IDisabledButton {
+  isTransactionStage: boolean;
+}
+
+export const DisabledButton: FC<IDisabledButton> = ({ isTransactionStage }) => {
   return (
     <div className="order_creation_data_form_submit disabled_button">
-      <img src={LoaderImage} />
-      <span>Searching for best price</span>
+      <img src={LoaderImage} alt="" />
+      {(isTransactionStage && <span>Transaction in progress</span>) || (
+        <span>Searching for best price</span>
+      )}
     </div>
   );
 };
