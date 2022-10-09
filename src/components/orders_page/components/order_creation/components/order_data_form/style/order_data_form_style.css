@@ -83,7 +83,7 @@
     display: block;
   }
 }
-@media screen and (max-width: 1024px) and (min-width: 768px) {
+@media screen and (max-width: 1439px) and (min-width: 768px) {
   .order_creation_data_form_tokens {
     margin-right: 0px;
   }

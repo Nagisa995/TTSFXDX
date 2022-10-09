@@ -21,6 +21,11 @@
   padding: 8px 16px;
   width: 147px;
   height: 36px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 .order_creation_operation_tabs .active {
   background: #08d899;

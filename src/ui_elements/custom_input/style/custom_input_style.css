@@ -25,7 +25,7 @@
   position: absolute;
   top: 13px;
   left: 16px;
-  transition: 250ms linear;
+  transition: 150ms linear;
 }
 
 .custom_input_active {
@@ -47,7 +47,7 @@
   position: absolute;
   top: 6px;
   left: 16px;
-  transition: 250ms linear;
+  transition: 150ms linear;
 }
 .custom_input_active_visible {
   width: 100%;

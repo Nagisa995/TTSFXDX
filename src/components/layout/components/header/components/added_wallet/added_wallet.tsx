@@ -13,9 +13,9 @@ interface IAddedWallet {
 export const AddedWallet: FC<IAddedWallet> = ({ wallet }) => {
   return (
     <div className="added_wallet_container">
-      <img src={MetamaskLogo} className="metamask_logo" />
+      <img src={MetamaskLogo} className="metamask_logo" alt="" />
       <span>{hidingPart(wallet)}</span>
-      <img src={EndBlockImage} className="end_image" />
+      <img src={EndBlockImage} className="end_image" alt="" />
     </div>
   );
 };

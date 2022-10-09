@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import {
   getMatchingOrders,
+  getMyOrdersInfo,
   getOrdersInfo,
 } from "../../../../../../api/order_api";
 import {
@@ -87,6 +88,8 @@ export const OrderDataForm: FC = () => {
           ORDER_EXECUTION_STAGE.DATA_COLLECTION
         )
       );
+
+      dispatch(getMyOrdersInfo(wallet));
     }
   }, [stage]);
   /*eslint-enable*/
